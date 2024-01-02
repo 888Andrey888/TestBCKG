@@ -1,15 +1,11 @@
 package com.example.testbckg.data.firebase.storage
 
-import android.util.Log
 import com.example.testbckg.data.firebase.models.GuideModelDto
 import com.example.testbckg.data.firebase.models.TouristModelDto
-import com.example.testbckg.data.utils.Constants.GUIDES
 import com.example.testbckg.data.utils.Constants.TOURISTS
 import com.example.testbckg.domain.utils.Resource
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
@@ -18,8 +14,6 @@ class FirebaseAuthStorageImpl @Inject constructor(
     private val firebaseAuth: FirebaseAuth,
     private val firebaseFirestore: FirebaseFirestore
 ) : FirebaseAuthStorage {
-
-    private val TAG = "ololo"
 
     override suspend fun getCurrentUser() = firebaseAuth.currentUser
 
@@ -44,7 +38,7 @@ class FirebaseAuthStorageImpl @Inject constructor(
                     emit(Resource.Success(true))
                 else
                     emit(Resource.Error("Oh, something went wrong"))
-            }else
+            } else
                 emit(Resource.Error("Oh, something went wrong"))
         } catch (e: Exception) {
             emit(
@@ -76,7 +70,7 @@ class FirebaseAuthStorageImpl @Inject constructor(
                     emit(Resource.Success(true))
                 else
                     emit(Resource.Error("Oh, something went wrong"))
-            }else
+            } else
                 emit(Resource.Error("Oh, something went wrong"))
         } catch (e: Exception) {
             emit(
