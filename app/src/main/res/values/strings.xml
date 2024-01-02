@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Test Backcountry KG</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="password">Password</string>
+    <string name="sign_in">Sign in</string>
+    <string name="or">or</string>
+    <string name="registration">Registration</string>
+    <string name="enter_your_password">Enter your password</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="tourist">Tourist</string>
+    <string name="guide">Guide</string>
+    <string name="if_you_don_t_have_an_account">If you don\'t have an account</string>
+    <string name="the_field_must_not_be_empty">The field must not be empty</string>
+    <string name="choose_who_you_are">choose who you are:</string>
+    <string name="next">Next</string>
+    <string name="sign_out">Sign out</string>
+</resources>

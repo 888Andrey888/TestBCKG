@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "502055321678",
+    "project_id": "testbckg",
+    "storage_bucket": "testbckg.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:502055321678:android:037974b5a8feade081031f",
+        "android_client_info": {
+          "package_name": "com.example.testbckg"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzabk1zWu29iL6UfEXl1V4RDkK8bxNQ50"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
