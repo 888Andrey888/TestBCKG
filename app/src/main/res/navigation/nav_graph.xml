@@ -6,36 +6,29 @@
     app:startDestination="@id/mainFragment">
 
     <fragment
-        android:id="@+id/authPhoneFragment"
-        android:name="com.example.testbckg.presentation.auth.AuthPhoneFragment"
-        android:label="fragment_auth_phone"
-        tools:layout="@layout/fragment_auth_phone" >
-        <action
-            android:id="@+id/action_authPhoneFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-        <action
-            android:id="@+id/action_authPhoneFragment_to_authGuideFragment"
-            app:destination="@id/authGuideFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginFragment"
-        android:name="com.example.testbckg.presentation.login.LoginFragment"
-        android:label="LoginFragment" >
-        <action
-            android:id="@+id/action_loginFragment_to_authPhoneFragment"
-            app:destination="@id/authPhoneFragment" />
-        <action
-            android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/mainFragment"
         android:name="com.example.testbckg.presentation.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main"/>
     <fragment
-        android:id="@+id/authGuideFragment"
-        android:name="com.example.testbckg.presentation.auth.authguide.AuthGuideFragment"
-        android:label="fragment_auth_guide"
-        tools:layout="@layout/fragment_auth_guide" />
+        android:id="@+id/logInFragment"
+        android:name="com.example.testbckg.presentation.auth.login.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in">
+        <action
+            android:id="@+id/action_logInFragment_to_signUpUserBottomSheetFragment"
+            app:destination="@id/signUpUserBottomSheetFragment" />
+        <action
+            android:id="@+id/action_logInFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/signUpUserBottomSheetFragment"
+        android:name="com.example.testbckg.presentation.auth.signup.SignUpUserBottomSheetFragment"
+        tools:layout="@layout/bottom_sheet_dialog_sign_up_user" >
+        <action
+            android:id="@+id/action_signUpUserBottomSheetFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </dialog>
 </navigation>

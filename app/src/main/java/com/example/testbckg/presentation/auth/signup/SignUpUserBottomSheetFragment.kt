@@ -1,78 +1,54 @@
-package com.example.testbckg.presentation.auth
+package com.example.testbckg.presentation.auth.signup
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.AdapterView.OnItemSelectedListener
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.testbckg.R
-import com.example.testbckg.core.base.BaseFragment
-import com.example.testbckg.databinding.FragmentAuthPhoneBinding
+import com.example.testbckg.databinding.BottomSheetDialogSignUpUserBinding
 import com.example.testbckg.domain.models.DefaultUserModel
 import com.example.testbckg.domain.models.TouristModel
-import com.example.testbckg.utils.Constants
+import com.example.testbckg.presentation.auth.AuthViewModel
 import com.example.testbckg.utils.State
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding>() {
+class SignUpUserBottomSheetFragment : BottomSheetDialogFragment() {
 
+    private lateinit var binding: BottomSheetDialogSignUpUserBinding
+    override fun getTheme() = R.style.AppBottomSheetDialogTheme
     private val viewModel by viewModels<AuthViewModel>()
-
     private val countries = listOf("Tourist", "Guide")
     private var userType = 0
 
-    override fun inflaterViewBinding(
-        inflater: LayoutInflater, container: ViewGroup?
-    ) = FragmentAuthPhoneBinding.inflate(inflater, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = BottomSheetDialogSignUpUserBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initListener()
         initSpinner()
+        initFlow()
     }
 
-    override fun initFlow() {
-        viewModel.viewState.onEach {
-            when (it) {
-                is State.Empty -> {
-                    binding.llUserInformation.visibility = View.VISIBLE
-                    binding.llNextButton.visibility = View.VISIBLE
-                    binding.progressBar.visibility = View.GONE
-                }
-
-                is State.Loading -> {
-                    binding.llUserInformation.visibility = View.GONE
-                    binding.llNextButton.visibility = View.GONE
-                    binding.progressBar.visibility = View.VISIBLE
-                }
-
-                is State.Success -> {
-                    if (it.data!!)
-                        findNavController().navigate(R.id.mainFragment)
-                }
-
-                is State.Error -> {
-                    binding.llUserInformation.visibility = View.VISIBLE
-                    binding.llNextButton.visibility = View.VISIBLE
-                    binding.progressBar.visibility = View.GONE
-                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
-                }
-            }
-        }.launchIn(viewLifecycleOwner.lifecycleScope)
-    }
-
-    override fun initListener() {
-        binding.btnNext.setOnClickListener {
+    private fun initListener() {
+        binding.fabSignUpUser.setOnClickListener {
             when (userType) {
                 0 -> {
                     viewLifecycleOwner.lifecycleScope.launch {
@@ -89,14 +65,44 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding>() {
                             email = binding.etUserEmail.text.toString(),
                             password = binding.etUserPassword.text.toString()
                         )
-                        findNavController().navigate(
+                        /*findNavController().navigate(
                             R.id.authGuideFragment,
                             bundleOf(Constants.AUTH_GUIDE to defaultUserModel)
-                        )
+                        )*/
                     }
                 }
             }
         }
+    }
+
+    private fun initFlow() {
+        viewModel.viewState.onEach {
+            when (it) {
+                is State.Empty -> {
+                    binding.llUserInformation.visibility = View.VISIBLE
+                    binding.fabSignUpUser.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.GONE
+                }
+
+                is State.Loading -> {
+                    binding.llUserInformation.visibility = View.GONE
+                    binding.fabSignUpUser.visibility = View.GONE
+                    binding.progressBar.visibility = View.VISIBLE
+                }
+
+                is State.Success -> {
+                    if (it.data!!)
+                        findNavController().navigate(R.id.mainFragment)
+                }
+
+                is State.Error -> {
+                    binding.llUserInformation.visibility = View.VISIBLE
+                    binding.fabSignUpUser.visibility = View.VISIBLE
+                    binding.progressBar.visibility = View.GONE
+                    Toast.makeText(requireContext(), it.message, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }.launchIn(viewLifecycleOwner.lifecycleScope)
     }
 
     private fun checkFields(): Boolean {
@@ -136,7 +142,8 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding>() {
         binding.spinnerUserType.adapter = adapter
         binding.spinnerUserType.setSelection(0)
 
-        binding.spinnerUserType.onItemSelectedListener = object : OnItemSelectedListener {
+        binding.spinnerUserType.onItemSelectedListener = object :
+            AdapterView.OnItemSelectedListener {
             override fun onItemSelected(
                 parent: AdapterView<*>?, view: View?, position: Int, id: Long
             ) {
@@ -148,5 +155,4 @@ class AuthPhoneFragment : BaseFragment<FragmentAuthPhoneBinding>() {
 
         }
     }
-
 }

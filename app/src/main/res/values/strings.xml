@@ -18,4 +18,6 @@
     <string name="choose_who_you_are">choose who you are:</string>
     <string name="next">Next</string>
     <string name="sign_out">Sign out</string>
+    <string name="age">Age</string>
+    <string name="please_indicate_your_work_experience">Please indicate your work experience</string>
 </resources>

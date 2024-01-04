@@ -8,8 +8,8 @@ data class GuideModel(
     var lastName: String,
     var email: String,
     var password: String,
-    var age: Long,
+    var age: String,
     var type: GuideType,
-    var experience: Int,
-    var imageUrl: String
+    var experience: String,
+    var imageUrl: String = ""
 )

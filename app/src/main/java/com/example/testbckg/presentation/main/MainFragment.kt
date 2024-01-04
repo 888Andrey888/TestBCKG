@@ -6,7 +6,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.testbckg.R
 import com.example.testbckg.core.base.BaseFragment
@@ -45,7 +44,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     private fun checkUser() {
         lifecycleScope.launch {
             if (viewModel.getCurrentUser() == null)
-                findNavController().navigate(R.id.loginFragment)
+                findNavController().navigate(R.id.logInFragment)
         }
     }
 

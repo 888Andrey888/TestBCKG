@@ -20,7 +20,7 @@ fun GuideModel.mapToDto() = GuideModelDto(
     email = this.email,
     password = this.password,
     age = this.age,
-    type = this.type,
+    type = this.type.toString(),
     experience = this.experience,
     imageUrl = this.imageUrl
 )
