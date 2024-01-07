@@ -9,8 +9,4 @@ import javax.inject.Inject
 class MainFragmentViewModel @Inject constructor(private val authUseCase: AuthUseCase) :
     ViewModel() {
 
-    suspend fun signOutUser() = authUseCase.signOutUser()
-
-    suspend fun getCurrentUser() = authUseCase.getCurrentUser()
-
 }

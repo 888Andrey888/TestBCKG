@@ -9,26 +9,34 @@
         android:id="@+id/mainFragment"
         android:name="com.example.testbckg.presentation.main.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main"/>
-    <fragment
-        android:id="@+id/logInFragment"
-        android:name="com.example.testbckg.presentation.auth.login.LogInFragment"
-        android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in">
+        tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_logInFragment_to_signUpUserBottomSheetFragment"
-            app:destination="@id/signUpUserBottomSheetFragment" />
+            android:id="@+id/action_mainFragment_to_driversFragment"
+            app:destination="@id/driversFragment" />
         <action
-            android:id="@+id/action_logInFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_mainFragment_to_guidesFragment"
+            app:destination="@id/guidesFragment" />
     </fragment>
 
-    <dialog
-        android:id="@+id/signUpUserBottomSheetFragment"
-        android:name="com.example.testbckg.presentation.auth.signup.SignUpUserBottomSheetFragment"
-        tools:layout="@layout/bottom_sheet_dialog_sign_up_user" >
-        <action
-            android:id="@+id/action_signUpUserBottomSheetFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
-    </dialog>
+    <fragment
+        android:id="@+id/messagesFragment"
+        android:name="com.example.testbckg.presentation.messages.MessagesFragment"
+        android:label="fragment_messages"
+        tools:layout="@layout/fragment_messages" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.example.testbckg.presentation.favorites.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" />
+    <fragment
+        android:id="@+id/driversFragment"
+        android:name="com.example.testbckg.presentation.drivers.DriversFragment"
+        android:label="fragment_drivers"
+        tools:layout="@layout/fragment_drivers" />
+    <fragment
+        android:id="@+id/guidesFragment"
+        android:name="com.example.testbckg.presentation.guides.GuidesFragment"
+        android:label="fragment_guides"
+        tools:layout="@layout/fragment_guides" />
+
 </navigation>

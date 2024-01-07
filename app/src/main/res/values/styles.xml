@@ -18,4 +18,29 @@
         parent="Widget.Design.BottomSheet.Modal">
         <item name="android:background">@drawable/bottom_sheet_background</item>
     </style>
+    
+    <style name="Widget.Material3.BottomNavigationView.ActiveIndicator" parent="">
+        <item name="android:width">40dp</item>
+        <item name="android:height">40dp</item>
+        <item name="marginHorizontal">@dimen/default_indentation</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.Material3.NavigationBarView.ActiveIndicator</item>
+        <item name="android:color">@color/bottom_navigation_color</item>
+    </style>
+    
+    <style name="App.Custom.Indicator" parent="Widget.Material3.BottomNavigationView.ActiveIndicator">
+        <item name="android:color">@color/link_color</item>
+    </style>
+
+    <style name="bottom_navigation">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:background">@drawable/bottom_navigation_background</item>
+    </style>
+
+    <style name="toolbar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?actionBarSize</item>
+        <item name="android:background">@drawable/toolbar_background</item>
+    </style>
+
 </resources>

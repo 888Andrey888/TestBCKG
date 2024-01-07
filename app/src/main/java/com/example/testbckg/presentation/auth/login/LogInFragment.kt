@@ -7,12 +7,14 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
 import com.example.testbckg.R
 import com.example.testbckg.core.base.BaseFragment
 import com.example.testbckg.databinding.FragmentLogInBinding
+import com.example.testbckg.presentation.activitys.auth.AuthActivity
+import com.example.testbckg.presentation.activitys.main.MainActivity
 import com.example.testbckg.presentation.auth.AuthViewModel
 import com.example.testbckg.utils.State
+import com.example.testbckg.utils.replaceActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -45,7 +47,7 @@ class LogInFragment : BaseFragment<FragmentLogInBinding>() {
 
                 is State.Success -> {
                     if (it.data!!)
-                        findNavController().navigate(R.id.mainFragment)
+                        (activity as AuthActivity).replaceActivity(MainActivity())
                 }
 
                 is State.Error -> {

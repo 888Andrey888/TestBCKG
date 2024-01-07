@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_auth"
+    app:startDestination="@id/logInFragment">
+
+    <fragment
+        android:id="@+id/logInFragment"
+        android:name="com.example.testbckg.presentation.auth.login.LogInFragment"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logInFragment_to_signUpUserBottomSheetFragment"
+            app:destination="@id/signUpUserBottomSheetFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/signUpUserBottomSheetFragment"
+        android:name="com.example.testbckg.presentation.auth.signuptourist.SignUpUserBottomSheetFragment"
+        android:label="bottom_sheet_dialog_sign_up_user"
+        tools:layout="@layout/bottom_sheet_dialog_sign_up_user" />
+</navigation>

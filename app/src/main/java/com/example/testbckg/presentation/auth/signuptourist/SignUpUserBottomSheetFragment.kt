@@ -1,4 +1,4 @@
-package com.example.testbckg.presentation.auth.signup
+package com.example.testbckg.presentation.auth.signuptourist
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,15 @@ import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.testbckg.R
 import com.example.testbckg.databinding.BottomSheetDialogSignUpUserBinding
 import com.example.testbckg.domain.models.DefaultUserModel
 import com.example.testbckg.domain.models.TouristModel
+import com.example.testbckg.presentation.activitys.auth.AuthActivity
+import com.example.testbckg.presentation.activitys.main.MainActivity
 import com.example.testbckg.presentation.auth.AuthViewModel
 import com.example.testbckg.utils.State
+import com.example.testbckg.utils.replaceActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.launchIn
@@ -65,10 +67,6 @@ class SignUpUserBottomSheetFragment : BottomSheetDialogFragment() {
                             email = binding.etUserEmail.text.toString(),
                             password = binding.etUserPassword.text.toString()
                         )
-                        /*findNavController().navigate(
-                            R.id.authGuideFragment,
-                            bundleOf(Constants.AUTH_GUIDE to defaultUserModel)
-                        )*/
                     }
                 }
             }
@@ -92,7 +90,7 @@ class SignUpUserBottomSheetFragment : BottomSheetDialogFragment() {
 
                 is State.Success -> {
                     if (it.data!!)
-                        findNavController().navigate(R.id.mainFragment)
+                        (activity as AuthActivity).replaceActivity(MainActivity())
                 }
 
                 is State.Error -> {

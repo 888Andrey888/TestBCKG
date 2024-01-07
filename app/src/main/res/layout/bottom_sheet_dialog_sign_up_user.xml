@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/default_indentation"
-    tools:context=".presentation.auth.signup.SignUpUserBottomSheetFragment">
+    tools:context=".presentation.auth.signuptourist.SignUpUserBottomSheetFragment">
 
     <ProgressBar
         android:id="@+id/progress_bar"

@@ -5,18 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.findNavController
 import com.example.testbckg.R
 import com.example.testbckg.core.base.BaseFragment
 import com.example.testbckg.databinding.FragmentMainBinding
+import com.example.testbckg.presentation.activitys.main.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     private val viewModel by viewModels<MainFragmentViewModel>()
+    private val fragmentsArray = listOf(
+        "Guides",
+        "Drivers"
+    )
 
     override fun inflaterViewBinding(
         inflater: LayoutInflater,
@@ -25,7 +27,22 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        checkUser()
+        initFields()
+    }
+
+    private fun initFields() {
+        (activity as MainActivity).title = getString(R.string.home)
+
+        val viewPagerAdapter = ViewPagerAdapter(
+            fragmentManager = (activity as MainActivity).supportFragmentManager,
+            lifecycle = lifecycle,
+            countFragments = fragmentsArray.size
+        )
+        binding.vpHome.adapter = viewPagerAdapter
+
+        /*TabLayoutMediator(binding.tabHome, binding.vpHome) { tab, position ->
+            tab.text = fragmentsArray[position]
+        }.attach()*/
     }
 
     override fun initFlow() {
@@ -33,19 +50,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     override fun initListener() {
-        binding.btnSignOut.setOnClickListener {
-            viewLifecycleOwner.lifecycleScope.launch {
-                viewModel.signOutUser()
-                checkUser()
-            }
-        }
-    }
 
-    private fun checkUser() {
-        lifecycleScope.launch {
-            if (viewModel.getCurrentUser() == null)
-                findNavController().navigate(R.id.logInFragment)
-        }
     }
 
 }

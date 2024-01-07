@@ -3,4 +3,7 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="link_color">#5884E7</color>
+    <color name="bottom_navigation_color">#2966EF</color>
+    <color name="text_color">#F2F2F2</color>
+    <color name="tab_active_item">#CA43CA</color>
 </resources>

@@ -20,4 +20,9 @@
     <string name="sign_out">Sign out</string>
     <string name="age">Age</string>
     <string name="please_indicate_your_work_experience">Please indicate your work experience</string>
+    <string name="home">Home</string>
+    <string name="messages">Messages</string>
+    <string name="exit">Exit</string>
+    <string name="guides">Guides</string>
+    <string name="drivers">Drivers</string>
 </resources>
